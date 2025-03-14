@@ -1,0 +1,20 @@
+build:
+  command: "npm run build"
+  publish: "build" # The folder where React generates the production files
+
+deploy:
+  provider: netlify
+
+environment:
+  NETLIFY_SITE_ID: "your-site-id"
+  NETLIFY_AUTH_TOKEN: "your-auth-token"
+
+redirects:
+  - from: "/*"
+    to: "/index.html"
+    status: 200
+
+headers:
+  - for: "/*"
+    values:
+      Cache-Control: "public, max-age=0, must-revalidate"
